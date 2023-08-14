@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>The Adventures of Purple: The Complete Saga</title>
+  <style>
+    body {
+      background-color: purple;
+      overflow-y: scroll;
+    }
+
+    .game-selection {
+      background-color: purple;
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    .game-container {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none;
+      z-index: 999;
+    }
+
+    .game-container.active {
+      display: block;
+    }
+  </style>
+  <script>
+    function toggleAspectRatio() {
+      var gameContainer = document.getElementsByClassName("game-container");
+
+      for (var i = 0; i < gameContainer.length; i++) {
+        var game = gameContainer[i];
+        var gameLink = game.querySelector("iframe");
+        var gameURL = gameLink.src;
+
+        if (gameURL.includes("fancade.com")) {
+          if (document.getElementById("aspect-ratio-toggle").checked) {
+            gameLink.src = gameURL.replace("16-9", "4-3");
+          } else {
+            gameLink.src = gameURL.replace("4-3", "16-9");
+          }
+        }
+      }
+    }
+
+    function openGame(gameId) {
+      var gameContainer = document.getElementById(gameId);
+      gameContainer.classList.add("active");
+      toggleAspectRatio();
+    }
+
+    function closeGame(gameId) {
+      var gameContainer = document.getElementById(gameId);
+      gameContainer.classList.remove("active");
+    }
+  </script>
+</head>
+
+<body>
+  <h1>The Adventures of Purple: The Complete Saga</h1>
+
+  <div style="overflow-y: scroll; height: 500px;">
+    <h2>Classics</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('art-origins')">Purple Art Origins</a></li>
+      <li><a href="#" onclick="openGame('classics')">Purple Classics 1-9</a></li>
+      <li><a href="#" onclick="openGame('extras')">Purple Extras</a></li>
+      <li><a href="#" onclick="openGame('shorts')">Purple Shorts</a></li>
+    </ul>
+
+    <h2>Purple Returns</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('tricias-adventures')">Purple: Tricia's Adventures</a></li>
+      <li><a href="#" onclick="openGame('season1')">Purple Returns Season 1</a></li>
+      <li><a href="#" onclick="openGame('arcade')">Purple Returns Arcade</a></li>
+      <li><a href="#" onclick="openGame('city')">Purple Returns City</a></li>
+      <li><a href="#" onclick="openGame('season2')">Purple Returns Season 2</a></li>
+      <li><a href="#" onclick="openGame('season3')">Purple Returns Season 3</a></li>
+      <li><a href="#" onclick="openGame('season4')">Purple Returns Season 4</a></li>
+      <li><a href="#" onclick="openGame('season5')">Purple Returns Season 5</a></li>
+      <li><a href="#" onclick="openGame('season6')">Purple Returns Season 6</a></li>
+      <li><a href="#" onclick="openGame('season7')">Purple Returns Season 7</a></li>
+      <li><a href="#" onclick="openGame('season8')">Purple Returns Season 8</a></li>
+      <li><a href="#" onclick="openGame('season9')">Purple Returns Season 9</a></li>
+      <li><a href="#" onclick="openGame('season10')">Purple Returns Season 10</a></li>
+    </ul>
+
+    <h2>Purple Movies</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('animated')">Purple Returns Animated</a></li>
+      <li><a href="#" onclick="openGame('chemical-chaos')">Purple Chemical Chaos</a></li>
+      <li><a href="#" onclick="openGame('the-movie')">Purple: The Movie</a></li>
+      <li><a href="#" onclick="openGame('endgame')">Purple Endgame</a></li>
+      <li><a href="#" onclick="openGame('endgame-part2')">Purple Endgame Part 2</a></li>
+    </ul>
+
+    <h2>Purple Podcast</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('podcast')">Purple's Podcast</a></li>
+      <li><a href="#" onclick="openGame('game-of-tomorrow')">Purple: Game of Tomorrow + Expansion</a></li>
+    </ul>
+
+    <h2>The Final Chapter</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('final-chapter')">Purpternal Tricshine of the Spotless Darkz</a></li>
+    </ul>
+
+    <h2>Special Features</h2>
+    <ul>
+      <li><a href="#" onclick="openGame('video-pilot')">The Adventures of Purple Video Pilot</a></li>
+      <li><a href="#" onclick="openGame('old-games')">Playing Old Purplecade Games</a></li>
+      <li><a href="#" onclick="openGame('update-audio')">Purplecade Update Audio</a></li>
+      <li><a href="#" onclick="openGame('phone-gallery')">Purplecade's Personal Phone Photo Gallery</a></li>
+      <li><a href="#" onclick="openGame('season1-demo')">Purple Returns Season 1 (Demo Version)</a></li>
+      <li><a href="#" onclick="openGame('season1-beta')">Purple Returns Season 1 (Beta Version)</a></li>
+      <li><a href="#" onclick="openGame('returns-movie')">Purple Returns: The Movie</a></li>
+      <li><a href="#" onclick="openGame('bumpers')">Purple 3D Bumpers Collection</a></li>
+      <li><a href="#" onclick="openGame('tricshine-trailer')">Purpternal Tricshine of the Spotless Darkz Trailer</a></li>
+      <li><a href="#" onclick="openGame('tricshine-sneak-peek')">Purpternal Tricshine of the Spotless Darkz Sneak Peek</a></li>
+    </ul>
+  </div>
+
+  <div id="art-origins" class="game-container">
+    <button onclick="closeGame('art-origins')">Back</button>
+    <iframe src="https://play.fancade.com/63090E69CBE92E2E" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="classics" class="game-container">
+    <button onclick="closeGame('classics')">Back</button>
+    <iframe src="https://play.fancade.com/6397C31898308309" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="extras" class="game-container">
+    <button onclick="closeGame('extras')">Back</button>
+    <iframe src="https://play.fancade.com/6367D28171FACA6E" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="shorts" class="game-container">
+    <button onclick="closeGame('shorts')">Back</button>
+    <iframe src="https://play.fancade.com/6367D28171FACA6E" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="tricias-adventures" class="game-container">
+    <button onclick="closeGame('tricias-adventures')">Back</button>
+    <iframe src="https://play.fancade.com/6445FAC310C28F51" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season1" class="game-container">
+    <button onclick="closeGame('season1')">Back</button>
+    <iframe src="https://play.fancade.com/62ED484061435756" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="arcade" class="game-container">
+    <button onclick="closeGame('arcade')">Back</button>
+    <iframe src="https://play.fancade.com/62FA67ADFB418B46" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="city" class="game-container">
+    <button onclick="closeGame('city')">Back</button>
+    <iframe src="https://play.fancade.com/638ACEDFF2BCAD13" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season2" class="game-container">
+    <button onclick="closeGame('season2')">Back</button>
+    <iframe src="https://play.fancade.com/63AF829136777071" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season3" class="game-container">
+    <button onclick="closeGame('season3')">Back</button>
+    <iframe src="https://play.fancade.com/63BE44CEF011CCE1" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season4" class="game-container">
+    <button onclick="closeGame('season4')">Back</button>
+    <iframe src="https://play.fancade.com/63D5705AA90417FB" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season5" class="game-container">
+    <button onclick="closeGame('season5')">Back</button>
+    <iframe src="https://play.fancade.com/63EB994478474EFC" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season6" class="game-container">
+    <button onclick="closeGame('season6')">Back</button>
+    <iframe src="https://play.fancade.com/63F4D2B3F944E74C" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season7" class="game-container">
+    <button onclick="closeGame('season7')">Back</button>
+    <iframe src="https://play.fancade.com/63FA9B2D473F50F3" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season8" class="game-container">
+    <button onclick="closeGame('season8')">Back</button>
+    <iframe src="https://play.fancade.com/63FEBB6A67D8472F" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season9" class="game-container">
+    <button onclick="closeGame('season9')">Back</button>
+    <iframe src="https://play.fancade.com/640DFC2E930842FD" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season10" class="game-container">
+    <button onclick="closeGame('season10')">Back</button>
+    <iframe src="https://play.fancade.com/6414712EA9591139" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="animated" class="game-container">
+    <button onclick="closeGame('animated')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7"></iframe>
+  </div>
+
+  <div id="chemical-chaos" class="game-container">
+    <button onclick="closeGame('chemical-chaos')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="the-movie" class="game-container">
+    <button onclick="closeGame('the-movie')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="endgame" class="game-container">
+    <button onclick="closeGame('endgame')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="endgame-part2" class="game-container">
+    <button onclick="closeGame('endgame-part2')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="podcast" class="game-container">
+    <button onclick="closeGame('podcast')">Back</button>
+    <iframe src="https://archive.org/details/img-1636_202306" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="game-of-tomorrow" class="game-container">
+    <button onclick="closeGame('game-of-tomorrow')">Back</button>
+    <iframe src="https://play.fancade.com/647BBD2D94B5EF12" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="final-chapter" class="game-container">
+    <button onclick="closeGame('final-chapter')">Back</button>
+    <iframe src="https://play.fancade.com/64A84C4AB109D7E4" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="video-pilot" class="game-container">
+    <button onclick="closeGame('video-pilot')">Back</button>
+    <iframe src="https://archive.org/details/99-ca-8-cbf-f-4-cd-4144-8546-8947253-c-2204"></iframe>
+  </div>
+
+  <div id="old-games" class="game-container">
+    <button onclick="closeGame('old-games')">Back</button>
+    <iframe src="https://archive.org/details/record-online-voice-recorder.com_202304"></iframe>
+  </div>
+
+  <div id="update-audio" class="game-container">
+    <button onclick="closeGame('update-audio')">Back</button>
+    <iframe src="https://archive.org/details/record-online-voice-recorder.com_202304" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="phone-gallery" class="game-container">
+    <button onclick="closeGame('phone-gallery')">Back</button>
+    <img src="https://archive.org/details/makephotogallery.net_1687199871703" alt="Purplecade's Personal Phone Photo Gallery" width="100%" height="100%">
+  </div>
+
+  <div id="season1-demo" class="game-container">
+    <button onclick="closeGame('season1-demo')">Back</button>
+    <iframe src="https://play.fancade.com/6339F8C2E0C3D627" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="season1-beta" class="game-container">
+    <button onclick="closeGame('season1-beta')">Back</button>
+    <iframe src="https://play.fancade.com/63323C7B68CB2AB7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="returns-movie" class="game-container">
+    <button onclick="closeGame('returns-movie')">Back</button>
+    <iframe src="https://archive.org/details/vid-20221011-065636" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="bumpers" class="game-container">
+    <button onclick="closeGame('bumpers')">Back</button>
+    <iframe src="https://archive.org/details/1042243-d-fbe-7-4-deb-ac-33-85-b-578-ccc-49-b" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="tricshine-trailer" class="game-container">
+    <button onclick="closeGame('tricshine-trailer')">Back</button>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7" width="100%" height="100%"></iframe>
+  </div>
+
+  <div id="tricshine-sneak-peek" class="game-container">
+    <button onclick="closeGame('tricshine-sneak-peek')">Back</button>
+    <audio controls src="https://archive.org/details/record-online-voice-recorder.com_202304"></audio>
+  </div>
+
+  <div class="settings">
+    <label for="aspect-ratio-toggle">Original Aspect Ratio:</label>
+    <input type="checkbox" id="aspect-ratio-toggle" onchange="toggleAspectRatio()">
+  </div>
+</body>
+
+</html>
+
+
+
