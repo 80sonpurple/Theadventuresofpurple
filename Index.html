@@ -29,6 +29,23 @@
     .game-container.active {
       display: block;
     }
+
+    button {
+      background-color: magenta;
+      color: blue;
+      border: none;
+      padding: 10px;
+      margin: 5px;
+      cursor: url('https://emojicdn.elk.sh/🪄'), auto; /* Change cursor to magic wand emoji */
+    }
+
+    .special-button {
+      background-color: orange;
+    }
+
+    .magenta-button {
+      background-color: magenta;
+    }
   </style>
   <script>
     function toggleAspectRatio() {
@@ -55,9 +72,9 @@
       toggleAspectRatio();
     }
 
-    function closeGame(gameId) {
-      var gameContainer = document.getElementById(gameId);
-      gameContainer.classList.remove("active");
+    function closeGame() {
+      var activeGameContainer = document.querySelector(".game-container.active");
+      activeGameContainer.classList.remove("active");
     }
   </script>
 </head>
@@ -109,20 +126,21 @@
     <h2>The Final Chapter</h2>
     <ul>
       <li><a href="#" onclick="openGame('final-chapter')">Purpternal Tricshine of the Spotless Darkz</a></li>
+      <li><a href="#" onclick="openGame('purple-mirage')">May Cause Purples Mirage</a></li> <!-- New game added -->
     </ul>
 
     <h2>Special Features</h2>
     <ul>
-      <li><a href="#" onclick="openGame('video-pilot')">The Adventures of Purple Video Pilot</a></li>
-      <li><a href="#" onclick="openGame('old-games')">Playing Old Purplecade Games</a></li>
-      <li><a href="#" onclick="openGame('update-audio')">Purplecade Update Audio</a></li>
-      <li><a href="#" onclick="openGame('phone-gallery')">Purplecade's Personal Phone Photo Gallery</a></li>
-      <li><a href="#" onclick="openGame('season1-demo')">Purple Returns Season 1 (Demo Version)</a></li>
-      <li><a href="#" onclick="openGame('season1-beta')">Purple Returns Season 1 (Beta Version)</a></li>
-      <li><a href="#" onclick="openGame('returns-movie')">Purple Returns: The Movie</a></li>
-      <li><a href="#" onclick="openGame('bumpers')">Purple 3D Bumpers Collection</a></li>
-      <li><a href="#" onclick="openGame('tricshine-trailer')">Purpternal Tricshine of the Spotless Darkz Trailer</a></li>
-      <li><a href="#" onclick="openGame('tricshine-sneak-peek')">Purpternal Tricshine of the Spotless Darkz Sneak Peek</a></li>
+      <li><button class="special-button" onclick="openGame('video-pilot')">The Adventures of Purple Video Pilot</button></li>
+      <li><button class="special-button" onclick="openGame('old-games')">Playing Old Purplecade Games</button></li>
+      <li><button class="special-button" onclick="openGame('update-audio')">Purplecade Update Audio</button></li>
+      <li><button class="special-button" onclick="openGame('phone-gallery')">Purplecade's Personal Phone Photo Gallery</button></li>
+      <li><button class="special-button" onclick="openGame('season1-demo')">Purple Returns Season 1 (Demo Version)</button></li>
+      <li><button class="special-button" onclick="openGame('season1-beta')">Purple Returns Season 1 (Beta Version)</button></li>
+      <li><button class="special-button" onclick="openGame('returns-movie')">Purple Returns: The Movie</button></li>
+      <li><button class="special-button" onclick="openGame('bumpers')">Purple 3D Bumpers Collection</button></li>
+           <li><button class="special-button" onclick="openGame('tricshine-trailer')">Purpternal Tricshine of the Spotless Darkz Trailer</button></li>
+      <li><button class="special-button" onclick="openGame('tricshine-sneak-peek')">Purpternal Tricshine of the Spotless Darkz Sneak Peek</button></li>
     </ul>
   </div>
 
@@ -171,7 +189,7 @@
     <iframe src="https://play.fancade.com/63AF829136777071" width="100%" height="100%"></iframe>
   </div>
 
-  <div id="season3" class="game-container">
+   <div id="season3" class="game-container">
     <button onclick="closeGame('season3')">Back</button>
     <iframe src="https://play.fancade.com/63BE44CEF011CCE1" width="100%" height="100%"></iframe>
   </div>
@@ -213,7 +231,7 @@
 
   <div id="animated" class="game-container">
     <button onclick="closeGame('animated')">Back</button>
-    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974-e-8253-eda-52-bb-7"></iframe>
+    <iframe src="https://archive.org/details/08-b-7-e-054-b-02-a-4791-974eda-57"></iframe>
   </div>
 
   <div id="chemical-chaos" class="game-container">
@@ -249,6 +267,11 @@
   <div id="final-chapter" class="game-container">
     <button onclick="closeGame('final-chapter')">Back</button>
     <iframe src="https://play.fancade.com/64A84C4AB109D7E4" width="100%" height="100%"></iframe>
+  </div>
+  
+  <div id="purple-mirage" class="game-container">
+    <button onclick="closeGame('purple-mirage')">Back</button>
+    <iframe src="https://play.fancade.com/65B7DC1CCB72B97A" width="100%" height="100%"></iframe>
   </div>
 
   <div id="video-pilot" class="game-container">
@@ -309,5 +332,10 @@
 
 </html>
 
+
+
+</body>
+
+</html>
 
 
