@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Adventures of Purple: The Complete Saga</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: purple;
+  font-family: Arial, sans-serif;
+  cursor: url('https://emojicdn.elk.sh/🪄'), auto;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+  display: none;
+  height: calc(100dvh - 140px);
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.page.active {
+  display: block;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  background: black;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+.section h2 {
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: url('https://emojicdn.elk.sh/🪄'), auto;
+}
+
+.game {
+  background: magenta;
+  color: blue;
+}
+
+.special {
+  background: orange;
+  color: blue;
+}
+
+.summary {
+  background: yellow;
+  color: blue;
+}
+
+.achievements {
+  background: black;
+  color: blue;
+  border: 2px solid blue;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.nav button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: red;
+  color: blue;
+  font-size: 28px;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background: black;
+  color: blue;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+/* =========================
+   FULL-SCREEN VIEWER
+========================= */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  background: black;
+  display: none;
+  z-index: 1000;
+}
+
+.viewer.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Large game/document area */
+
+#frame {
+  display: block;
+  width: 100%;
+  height: calc(100dvh - 55px);
+  flex: 1;
+  border: none;
+  background: black;
+}
+
+/* =========================
+   VIEWER CONTROL BAR
+========================= */
+
+.viewer-controls {
+  width: 100%;
+  height: 55px;
+  min-height: 55px;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+/* Aspect ratio */
+
+.aspect-control {
+  color: white;
+  font-size: 14px;
+}
+
+.aspect-control input {
+  width: auto;
+  margin-right: 5px;
+}
+
+/* Back button */
+
+.back {
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 9px 16px;
+  background: blue;
+  color: yellow;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+========================= */
+
+@media (max-width: 600px) {
+
+  .page {
+    height: calc(100dvh - 120px);
+    padding: 10px;
+  }
+
+  .section {
+    padding: 12px;
+  }
+
+  button {
+    padding: 14px 10px;
+    font-size: 15px;
+  }
+
+  .nav {
+    bottom: 5px;
+    gap: 10px;
+  }
+
+  .nav button {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .settings {
+    display: none;
+  }
+
+  .viewer-controls {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  #frame {
+    height: calc(100dvh - 50px);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>The Adventures of Purple: The Complete Saga</h1>
+
+<!-- PAGE 1 -->
+<div id="p1" class="page active">
+
+<div class="section">
+<h2>Prequels</h2>
+<button class="game" onclick="openGame('art-origins')">Purple Art Origins</button>
+<button class="game" onclick="openGame('art-inception')">Purple Art Inception</button>
+<button class="game" onclick="openGame('age-of-history')">Purple Age of History</button>
+<button class="game" onclick="openGame('jasper-list')">Purple Jasper's List</button>
+<button class="game" onclick="openGame('china-jasper')">Purple ChinaJasper</button>
+<button class="game" onclick="openGame('jasper-tombstone')">Purple Jasper's Tombstone</button>
+</div>
+
+<div class="section">
+<h2>Classics</h2>
+<button class="game" onclick="openGame('classics')">Purple Classics 1-9</button>
+<button class="game" onclick="openGame('extras')">Purple Extras</button>
+<button class="game" onclick="openGame('shorts')">Purple Shorts</button>
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+<div id="p2" class="page">
+
+<div class="section">
+<h2>The Inbetween</h2>
+<button class="game" onclick="openGame('supplemental-stories')">Supplemental Stories</button>
+</div>
+
+<div class="section">
+<h2>Purple Returns</h2>
+<button class="game" onclick="openGame('tricias-adventures')">Tricia's Adventures</button>
+<button class="game" onclick="openGame('season1')">Purple Returns Season 1</button>
+<button class="game" onclick="openGame('arcade')">Purple Arcade</button>
+<button class="game" onclick="openGame('battles')">Purple Battles</button>
+<button class="game" onclick="openGame('arcticattack')">Purple Arctic Attack</button>
+<button class="game" onclick="openGame('city')">Purple Returns City</button>
+<button class="game" onclick="openGame('season2')">Purple Returns Season 2</button>
+<button class="game" onclick="openGame('season3')">Purple Returns Season 3</button>
+<button class="game" onclick="openGame('season4')">Purple Returns Season 4</button>
+<button class="game" onclick="openGame('season5')">Purple Returns Season 5</button>
+<button class="game" onclick="openGame('season6')">Purple Returns Season 6</button>
+<button class="game" onclick="openGame('season7')">Purple Returns Season 7</button>
+<button class="game" onclick="openGame('season8')">Purple Returns Season 8</button>
+<button class="game" onclick="openGame('season9')">Purple Returns Season 9</button>
+<button class="game" onclick="openGame('season10')">Purple Returns Season 10</button>
+</div>
+
+<div class="section">
+<h2>Movies / Comics / Podcast</h2>
+<button class="game" onclick="openGame('animated')">Purple Returns Animated</button>
+<button class="game" onclick="openGame('chemical-chaos')">Purple Chemical Chaos</button>
+<button class="game" onclick="openGame('the-movie')">Purple: The Movie</button>
+<button class="game" onclick="openGame('endgame')">Purple Endgame</button>
+<button class="game" onclick="openGame('endgame-part2')">Purple Endgame Part 2</button>
+<button class="game" onclick="openGame('comic')">Purple The Comic</button>
+<button class="game" onclick="openGame('podcast')">Purple's Podcast</button>
+<button class="game" onclick="openGame('game-of-tomorrow')">Game of Tomorrow</button>
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+<div id="p3" class="page">
+
+<div class="section">
+<h2>The Final Chapter</h2>
+<button class="game" onclick="openGame('final-chapter')">Purpternal Tricshine of the Spotless Darkz</button>
+<button class="game" onclick="openGame('purple-mirage')">May Cause Purple's Mirage</button>
+<button class="game" onclick="openGame('purple-playdate')">Purple Playdate:Murder, He painted & Tears of a raccoon</button>
+<button class="game" onclick="openGame('purple-nest')">One Darkz over the Purple's nest</button>
+</div>
+
+<div class="section">
+<h2>The Saga Continues</h2>
+<button class="game" onclick="openGame('fear-purple')">Fear No Purple</button>
+<button class="game" onclick="openGame('purple-sea')">The Old Purple & The Sea</button>
+<button class="game" onclick="openGame('purploris')">Purploris</button>
+<button class="game" onclick="openGame('purpdearment')">Terms of Purpdearment</button>
+</div>
+
+</div>
+
+<!-- PAGE 4 -->
+<div id="p4" class="page">
+
+<div class="section">
+<h2>The Last Hope</h2>
+<button class="game" onclick="openGame('purple-encore')">Purple: Azrael's Encore</button>
+</div>
+
+<div class="section">
+<h2>The Next Stage</h2>
+<button class="game" onclick="openGame('purple-darkforce')">Purple: Dark Force</button>
+<button class="game" onclick="openGame('purple-dragonrage')">Purple: Dragon Rage</button>
+<button class="game" onclick="openGame('purple-operationscamper')">Purple: Operation Scamper</button>
+</div>
+
+</div>
+
+<!-- PAGE 5 -->
+<div id="p5" class="page">
+
+<div class="section">
+<h2>Special Features</h2>
+
+<button class="special" onclick="openGame('video-pilot')">The Adventures of Purple Video Pilot</button>
+<button class="special" onclick="openGame('old-games')">Playing Old Purplecade Games</button>
+<button class="special" onclick="openGame('update-audio')">Purplecade Update Audio</button>
+<button class="special" onclick="openGame('phone-gallery')">Purplecade's Personal Phone Photo Gallery</button>
+<button class="special" onclick="openGame('season1-demo')">Purple Returns Season 1 (Demo Version)</button>
+<button class="special" onclick="openGame('season1-beta')">Purple Returns Season 1 (Beta Version)</button>
+<button class="special" onclick="openGame('returns-movie')">Purple Returns: The Movie</button>
+<button class="special" onclick="openGame('bumpers')">Purple 3D Bumpers Collection</button>
+<button class="special" onclick="openGame('tricshine-trailer')">Purpternal Tricshine of the Spotless Darkz Trailer</button>
+<button class="special" onclick="openGame('tricshine-sneak-peek')">Purpternal Tricshine of the Spotless Darkz Sneak Peek</button>
+<button class="special" onclick="openGame('encore-manual')">Purple: Azrael's Encore: Official Manual</button>
+<button class="special" onclick="openGame('darkforce-manual')">Purple: Dark Force: Official Manual</button>
+<button class="special" onclick="openGame('dragonrage-manual')">Purple: Dragon Rage: Official Manual</button>
+<button class="special" onclick="openGame('operationscamper-manual')">Purple: Operation Scamper: Official Manual</button>
+
+<button class="summary" onclick="openGame('game-summaries')">Game Summaries</button>
+<button class="achievements" onclick="openGame('game-achievements')">Achievements</button>
+
+</div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+<button onclick="prev()">◀</button>
+<button onclick="next()">▶</button>
+</div>
+
+<!-- SETTINGS -->
+<div class="settings">
+<label>Aspect Ratio <input type="checkbox"></label>
+</div>
+
+<!-- FULL-SCREEN VIEWER -->
+<div id="viewer" class="viewer">
+
+<iframe id="frame" allowfullscreen></iframe>
+
+<div class="viewer-controls">
+
+<div class="aspect-control">
+<label>
+<input type="checkbox" id="viewerAspectRatio">
+Original Aspect Ratio
+</label>
+</div>
+
+<button class="back" onclick="closeGame()">Back to Menu</button>
+
+</div>
+
+</div>
+
+<script>
+
+let page = 1;
+
+function show(p) {
+
+  for(let i = 1; i <= 5; i++) {
+    document.getElementById("p" + i).classList.remove("active");
+  }
+
+  document.getElementById("p" + p).classList.add("active");
+
+  page = p;
+}
+
+function next() {
+  page++;
+
+  if(page > 5) {
+    page = 1;
+  }
+
+  show(page);
+}
+
+function prev() {
+  page--;
+
+  if(page < 1) {
+    page = 5;
+  }
+
+  show(page);
+}
+
+
+/* =========================
+   COMPLETE LINK SYSTEM
+========================= */
+
+const links = {
+
+"art-origins":"https://play.fancade.com/63090E69CBE92E2E",
+"art-inception":"https://play.fancade.com/666D0B95C5059880",
+"age-of-history":"https://play.fancade.com/66A192D00CA2250E",
+"jasper-list":"https://play.fancade.com/673D142C27A06AD7",
+"china-jasper":"https://play.fancade.com/67F83972F2650FF7",
+"jasper-tombstone":"https://play.fancade.com/68727FAAC8555C5A",
+
+"classics":"https://play.fancade.com/6397C31898308309",
+"extras":"https://play.fancade.com/6367D28171FACA6E",
+"shorts":"https://play.fancade.com/6367D28171FACA6E",
+
+"supplemental-stories":"https://play.fancade.com/67B4FC7E3E5F9951",
+
+"tricias-adventures":"https://play.fancade.com/6445FAC310C28F51",
+"season1":"https://play.fancade.com/62ED484061435756",
+"arcade":"https://play.fancade.com/62FA67ADFB418B46",
+"battles":"https://play.fancade.com/6307DDE5B36FB7F4",
+"arcticattack":"https://play.fancade.com/633B892BA26B2348",
+"city":"https://play.fancade.com/638ACEDFF2BCAD13",
+"season2":"https://play.fancade.com/63AF829136777071",
+"season3":"https://play.fancade.com/63BE44CEF011CCE1",
+"season4":"https://play.fancade.com/63D5705AA90417FB",
+"season5":"https://play.fancade.com/63EB994478474EFC",
+"season6":"https://play.fancade.com/63F4D2B3F944E74C",
+"season7":"https://play.fancade.com/63FA9B2D473F50F3",
+"season8":"https://play.fancade.com/63FEBB6A67D8472F",
+"season9":"https://play.fancade.com/640DFC2E930842FD",
+"season10":"https://play.fancade.com/6414712EA9591139",
+
+"animated":"https://archive.org/details/08-b-7-e-054-b-02-a-4791-974eda-57",
+"chemical-chaos":"https://archive.org/details/08-b-7-e-054-b-02-a-479-e-8253-eda-52-bb-7",
+"the-movie":"https://archive.org/details/08-b-7-e-054-b-02-a-479-e-8253-eda-52-bb-7",
+"endgame":"https://archive.org/details/08-b-7-e-054-b-02-a-479-e-8253-eda-52-bb-7",
+"endgame-part2":"https://archive.org/details/08-b-7-e-054-b-02-a-479-e-8253-eda-52-bb-7",
+
+"comic":"https://archive.org/details/the-adventures-of-purple-the-comic",
+"podcast":"https://archive.org/details/img-1636_202306",
+"game-of-tomorrow":"https://play.fancade.com/647BBD2D94B5EF12",
+
+"final-chapter":"https://play.fancade.com/64A84C4AB109D7E4",
+"purple-mirage":"https://play.fancade.com/65B7DC1CCB72B97A",
+"purple-playdate":"https://play.fancade.com/6636EA0663F2016E",
+"purple-nest":"https://play.fancade.com/6684635BB5C4E7CE",
+
+"fear-purple":"https://play.fancade.com/66BF88DE66F3B5A9",
+"purple-sea":"https://play.fancade.com/6779DA084180A010",
+"purploris":"https://play.fancade.com/67AA70C67133126C",
+"purpdearment":"https://play.fancade.com/67DB2404E626B56B",
+
+"purple-encore":"https://play.fancade.com/68897FD408BFFF5A",
+"purple-darkforce":"https://play.fancade.com/69152431F357F4B1",
+"purple-dragonrage":"https://play.fancade.com/6955CF6D61F67DCA",
+"purple-operationscamper":"https://play.fancade.com/69D40E83AABC593A",
+
+"video-pilot":"https://archive.org/details/99-ca-8-cbf-f-4-cd-4144-8546-8947253-c-2204",
+"old-games":"https://archive.org/details/record-online-voice-recorder.com_202304",
+"update-audio":"https://archive.org/details/record-online-voice-recorder.com_202304",
+"phone-gallery":"https://archive.org/details/makephotogallery.net_1687199871703",
+"season1-demo":"https://play.fancade.com/6339F8C2E0C3D627",
+"season1-beta":"https://play.fancade.com/63323C7B68CB2AB7",
+"returns-movie":"https://archive.org/details/vid-20221011-065636",
+"bumpers":"https://archive.org/details/1042243-d-fbe-7-4-deb-ac-33-85-b-578-ccc-49-b",
+"tricshine-trailer":"https://archive.org/details/08-b-7-e-054-b-02-a-4791-974eda-57",
+"tricshine-sneak-peek":"https://archive.org/details/record-online-voice-recorder.com_202304",
+
+"encore-manual":"https://docs.google.com/document/d/1EunA9IMP_n05Jb25z0VR6YhWDS7h9pfsR4sNPEH2fcM/edit",
+"darkforce-manual":"https://docs.google.com/document/d/11-vT3eoUYjeRGyWyPgcFbferJRNmPuYtymHlOKuvvHI/edit",
+"dragonrage-manual":"https://docs.google.com/document/d/1G70SwvOu4kO7Hb0jOfm81PpqFvJA_3Y1HPQYJ9IBnr0/edit",
+"operationscamper-manual":"https://docs.google.com/document/d/1DH1_GLknl2YobV50b3WfY5hxFrqSLco4yZQBM0D0NpQ/edit",
+
+"game-summaries":"https://docs.google.com/document/d/1AaGugvPrUzJBMMTDS5kr7FDIcy2G_GnqHX4-wpNKrPo/edit",
+"game-achievements":"https://docs.google.com/document/d/1EOeS9Y4gCYCknH03dVppEmA5T29Nt0OnWdw8ehST08Y/edit"
+
+};
+
+
+/* =========================
+   OPEN GAME
+========================= */
+
+function openGame(id) {
+
+  const frame = document.getElementById("frame");
+  const viewer = document.getElementById("viewer");
+
+  frame.src = links[id] || "";
+
+  viewer.classList.add("active");
+
+}
+
+
+/* =========================
+   CLOSE GAME
+========================= */
+
+function closeGame() {
+
+  const frame = document.getElementById("frame");
+  const viewer = document.getElementById("viewer");
+
+  frame.src = "";
+
+  viewer.classList.remove("active");
+
+  document.getElementById("viewerAspectRatio").checked = false;
+}
+
+</script>
+
+</body>
+</html>
+```
